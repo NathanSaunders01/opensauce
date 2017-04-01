@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   
   resources :projects
   
-  resources :contacts, only :create
+  resources :contacts
   
 end
