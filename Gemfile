@@ -34,6 +34,9 @@ gem 'bootstrap-sass', '3.3.7'
 # Use Font Awesome Sass gem for adding icons
 gem 'font-awesome-sass', '4.6.2'
 
+# Use Devise for user authentication
+gem 'devise', '4.2.0'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
