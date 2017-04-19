@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   
+  devise_for :users
+  
   get 'about', to: 'pages#about'
   
   resources :users do
@@ -8,8 +10,6 @@ Rails.application.routes.draw do
   end
   
   resources :projects
-  
-  devise_for :users
   
   resources :contacts, only: :create
   get 'contact-us', to: 'contacts#new', as: 'new_contact'
