@@ -1,8 +1,18 @@
 <div class="home-callout text-center container-fluid">
-  <h1>Welcome to OpenSauce</h1>
+  <h1>Welcome to OpenSauce/FirstName</h1>
   <h3>If you conceptualise it, they will come...</h3>
 </div>
 </br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="well">
+        <h2 class="text-center">Click here to sign up!</h2>
+        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success btn-lg btn-block' %>
+      </div>
+    </div>
+  </div>
+</div>
 <% if user_signed_in? %>
   <div class="container">
     <div class="row">
