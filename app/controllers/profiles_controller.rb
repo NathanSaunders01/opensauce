@@ -14,14 +14,14 @@ class ProfilesController < ApplicationController
     @profile = @user.build_profile( profile_params )
     if @profile.save
       flash[:success] = "Profile created!"
-      redirect_to user_path( params[:user_id])
+      redirect_to user_path(id: params[:user_id] )
     else 
-      render action :new
+      render action: :new
     end
   end
   
 private 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :skills, :description)
+    params.require(:profile).permit(:first_name, :last_name, :avatar, :skills, :description)
   end
 end
