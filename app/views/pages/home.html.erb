@@ -3,16 +3,6 @@
   <h3>If you conceptualise it, they will come...</h3>
 </div>
 </br>
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="well">
-        <h2 class="text-center">Click here to sign up!</h2>
-        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success btn-lg btn-block' %>
-      </div>
-    </div>
-  </div>
-</div>
 <% if user_signed_in? %>
   <div class="container">
     <div class="row">
@@ -44,6 +34,17 @@
       </div>
     </div>
   </div>
+<% else %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="well">
+        <h2 class="text-center">Click here to sign up!</h2>
+        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success btn-lg btn-block' %>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
 <div class="container">
   <div class="navbar navbar-fixed-bottom custom-footer">
