@@ -5,3 +5,10 @@ User Profiles
 * User profile should have a profile picture
 * User should be able to view all user profiles
 * User should be able to see all projects linked to their profiles
+
+Projects
+* Each project should be assigned to a profile
+* Each project should consist of a title, body, category, tag
+
+todo
+* make flash notices appear above content rather than push down on page
