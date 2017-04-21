@@ -50,7 +50,7 @@ h1, h2, h3 {
 }
 
 .navbar-nav .navbar-center ul {
-  display:inline;
+  display:inline-block;
 }
 
 
@@ -77,3 +77,14 @@ h1, h2, h3 {
   display: none;
 }
 
+.alert-notice, .alert-alert {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  margin-top: -14px;
+}
+
+.flash-container {
+  position: absolute;
+  width: 100%;
+}
