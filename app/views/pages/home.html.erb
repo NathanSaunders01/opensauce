@@ -1,27 +1,48 @@
 <div class="home-callout text-center container-fluid">
-  <h1>Welcome to OpenSauce/FirstName</h1>
-  <h3>If you conceptualise it, they will come...</h3>
+  <% if user_signed_in? && current_user.profile %>
+    <h1>Welcome to OpenSauce, <%= "#{current_user.profile.first_name}" %></h1>
+    <h3>If you conceptualise it, they will come...</h3>
+  <% else %>
+    <h1>Welcome to OpenSauce</h1>
+    <h3>If you conceptualise it, they will come...</h3>
+  <% end %>
 </div>
 </br>
 <% if user_signed_in? %>
   <div class="container">
     <div class="row">
-      <div class"col-md-12">
-        <div class="well">
-          <h2 class="text-center">Create Your Profile!</h2>
-          <h4 class="text-center">This will help others in the community find you based on your skills </h4>
-          <%= link_to "Create Your Profile", new_user_profile_path(user_id: current_user.id), class: 'btn btn-default btn-lg btn-block' %>
+      <% if current_user.profile %>
+        <div class="col-md-6">
+          <div class="well">
+            <h2 class="text-center">View Your Profile</h2>
+            <%= link_to "View Your Profile", user_path(id: current_user.id), class: 'btn btn-default btn-lg btn-block' %>
+          </div>
         </div>
+        <div class="col-md-6">
+          <div class="well">
+            <h2 class="text-center">Edit Your Profile</h2>
+            <%= link_to "Edit Your Profile", edit_user_profile_path(user_id: current_user.id), class: 'btn btn-default btn-lg btn-block' %>
+          </div>
+        </div>
+      <% else %>
+        <div class"col-md-12">
+          <div class="well">
+            <h2 class="text-center">Create Your Profile</h2>
+            <h4 class="text-center">This will help others in the community find you based on your skills </h4>
+            <%= link_to "Create Your Profile", new_user_profile_path(user_id: current_user.id), class: 'btn btn-default btn-lg btn-block' %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-          <div class="well">
-            <h2 class="text-center">Create a project</h2>
-            <h4 class="text-center">Get your idea out there and work with the community to perfect it!</h4>
-            </br>
+        <div class="well">
+          <h2 class="text-center">The Community</h2>
+          <h4 class="text-center">Visit the community to meet like-minded individuals to work with!</h4>
+          </br>            
+          <%= link_to "Visit the community","#", class: 'btn btn-default btn-lg btn-block' %>
         </div>
       </div>
       <div class="col-md-6">
@@ -35,20 +56,14 @@
     </div>
   </div>
 <% else %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="well">
-        <h2 class="text-center">Click here to sign up!</h2>
-        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success btn-lg btn-block' %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="well">
+          <h2 class="text-center">Click here to sign up!</h2>
+          <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success btn-lg btn-block' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 <% end %>
-<div class="container">
-  <div class="navbar navbar-fixed-bottom custom-footer">
-    <div class="col-md-12">
-    </div>
-  </div>
-</div>

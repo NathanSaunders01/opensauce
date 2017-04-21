@@ -40,13 +40,19 @@ h1, h2, h3 {
 }
 
 .navbar-default .navbar-brand, 
-.navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav > li > a,
+.navbar-nav .navbar-center > li > a {
   color: white;
   &:hover {
     color: white;
     opacity: 0.75;
   }
 }
+
+.navbar-nav .navbar-center ul {
+  display:inline;
+}
+
 
 .navbar-default .navbar-toggle .icon-bar {
   background-color: white;
