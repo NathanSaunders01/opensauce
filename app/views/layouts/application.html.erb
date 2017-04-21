@@ -7,65 +7,70 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class='container'>
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <i class="fa fa-group"></i>
-        OpenSauce
-      <% end %>
-    </div>
-    <div class="collapse navbar-collapse" id="main-nav-collapse">
-      <div class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'btn btn-default navbar-btn' %>
-        <% else %>  
-          <%= link_to "Log In", new_user_session_path, class: 'btn btn-default navbar-btn' %>
-          <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-default navbar-btn' %>
-        <% end %>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Projects", projects_path %></li>
-        <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "Contact Us", new_contact_path %></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div>
-</nav>
-
-  <div class="container">
-    <% flash.each do |type, msg| %>
-      <%= content_tag :div, msg, class: "alert alert-#{type}" %>
-    <% end %>
-  </div>
   
-  <%= yield %>
-
-
-<nav class="navbar navbar-default navbar-fixed-bottom custom-footer" role="navigation">
-  <div class='container flash-container'>
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <div class="nav navbar-nav navbar-center">
-          <ul class="nav navbar-nav navbar-center">
-            <li><%= link_to "Privacy Policy", "/#" %></li>
-            <li><%= link_to "Disclaimers", "/#" %></li>
-            <li><%= link_to "Developers", "/#" %></li>
-            <li><%= link_to "Contributions", "/#" %></li>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class='container'>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <i class="fa fa-group"></i>
+            OpenSauce
+          <% end %>
+        </div>
+        <div class="collapse navbar-collapse" id="main-nav-collapse">
+          <div class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'btn btn-default navbar-btn' %>
+            <% else %>  
+              <%= link_to "Log In", new_user_session_path, class: 'btn btn-default navbar-btn' %>
+              <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-default navbar-btn' %>
+            <% end %>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to "Profile", user_path(id: current_user.id) %></li>
+              <li><%= link_to "Community", users_path %></li>
+              <li><%= link_to "Projects", projects_path %></li>        
+            <% end %>
+            <li><%= link_to "Contact Us", new_contact_path %></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
-    </div>
-  </div>
-</nav>
-
+    </nav>
+    
+      <div class="container">
+        <% flash.each do |type, msg| %>
+          <%= content_tag :div, msg, class: "alert alert-#{type}" %>
+        <% end %>
+      </div>
+      
+      <%= yield %>
+    
   </body>
+  
+  <footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom custom-footer" role="navigation">
+      <div class='container flash-container'>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <div class="nav navbar-nav navbar-center">
+              <ul class="nav navbar-nav navbar-center">
+                <li><%= link_to "Privacy Policy", "/#" %></li>
+                <li><%= link_to "Disclaimers", "/#" %></li>
+                <li><%= link_to "Developers", "/#" %></li>
+                <li><%= link_to "Contributions", "/#" %></li>
+                <li><%= link_to "About", about_path %></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div>
+        </div>
+      </div>
+    </nav>
+  </footer>
 </html>
