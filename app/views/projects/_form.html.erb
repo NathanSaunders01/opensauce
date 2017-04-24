@@ -1,0 +1,25 @@
+<%= simple_form_for @project, url: user_projects_path(user_id: params[:user_id]) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :plan %>
+    <%= f.text_area :plan, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+  <%= f.label "Required Skills" %><br />
+  <%= f.collection_check_boxes :requiredskill_ids, Requiredskill.all, :id, :name do |b| %>
+    <div class="form-group">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+  <% end %>
+</div>
+  <div class="form-group">
+    <%= f.input :category, as: :check_boxes, collection: [['Digital', 1], ['Product', 2], ['Social', 3], ['Local community', 4], ['Global', 5]] %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Update Project", class: 'btn btn-primary' %>
+  </div>
+<% end %>

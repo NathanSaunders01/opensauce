@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="well">
+          <h1 class="text-center"><%= @project.title %></h1>
+          <h2>Plan</h2>
+          <p><%= @project.plan %></p>
+          <h3>By <%= link_to @user do %> 
+            <%= @user.profile.first_name %> 
+            <%= @user.profile.last_name %> 
+          <% end %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

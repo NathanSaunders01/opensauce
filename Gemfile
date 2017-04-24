@@ -43,6 +43,9 @@ gem 'hirb', '0.7.3'
 # Use Paperclip for image upload
 gem 'paperclip', '4.3.6'
 
+# Use Simple Form for forms
+gem 'simple_form'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
