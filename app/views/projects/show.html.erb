@@ -1,17 +1,24 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="well">
-          <h1 class="text-center"><%= @project.title %></h1>
-          <h2>Plan</h2>
-          <p><%= @project.plan %></p>
-          <h3>By <%= link_to @user do %> 
-            <%= @user.profile.first_name %> 
-            <%= @user.profile.last_name %> 
-          <% end %></h3>
+<h2 align="center">Title: <%= @project.title %></h2>
+<div class="well col-xs-8 col-xs-offset-2">
+  <% if @project.user %>
+    <ul class="listing">
+      <div class="row center">
+        <div align="center" class="col-md-4 col-md-offset-4">
+          <li>Created by: <%= link_to @project.user.profile.first_name, user_path(@project.user) %></li>
         </div>
       </div>
-    </div>
+    </ul>
+  <% end %>
+  <h4 class="center plan"><strong>Plan:</strong></h4>
+  <hr>
+  <%= simple_format(@project.plan) %>
+  <div class="project-actions">
+    <% if user_signed_in? && (current_user == @project.user || current_user.admin?) %>
+      <%= link_to 'Edit this project', edit_project_path(@project), class: "btn btn-xs btn-primary" %>
+      <%= link_to 'Delete this project', project_path(@project), method: :delete, 
+                                        data: {confirm: "Are you sure you want to delete the project?" }, 
+                                        class: "btn btn-xs btn-danger" %>
+    <% end %>
+    <%= link_to 'View all projects', projects_path, class: "btn btn-xs btn-success"  %>
   </div>
 </div>

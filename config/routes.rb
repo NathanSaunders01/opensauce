@@ -7,10 +7,9 @@ Rails.application.routes.draw do
   
   resources :users do
     resource :profile
-    resources :projects  
   end
   
-  resources :requiredskills
+  resources :projects  
   
   resources :contacts, only: :create
   get 'contact-us', to: 'contacts#new', as: 'new_contact'
