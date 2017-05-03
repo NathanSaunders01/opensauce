@@ -13,6 +13,9 @@
           <%= time_ago_in_words(project.created_at) %> ago,
           last updated: <%= time_ago_in_words(project.updated_at) %> ago</small>
         </div>
+        <% if project.categories.any? %>
+          <p>Categories: <%= render project.categories %></p>
+        <% end %>
         <% if user_signed_in? && (current_user == project.user || current_user.admin?) %>
           <div class="project-actions">
             <%= link_to 'Edit this project', edit_project_path(project), class: 'btn btn-xs btn-primary' %>

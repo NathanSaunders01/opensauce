@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
   
 private
   def project_params
-    params.require(:project).permit(:title, :plan)
+    params.require(:project).permit(:title, :plan, category_ids: [])
   end
   
   def set_project
