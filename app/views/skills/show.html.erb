@@ -1,0 +1,14 @@
+<h1 align="center"><%= @skill.name %></h1>
+<div align="center">
+  <% if user_signed_in? and current_user.admin? %>
+    <div class="row">
+      <span class="badge"><%= link_to "Edit Skill Name", edit_skill_path(@skill) %></span>
+    </div>
+    </br>
+  <% end %>
+  <%= will_paginate @skill_profiles %>
+</div>
+<%#= render 'profiles/project', obj: @skill_users %>
+<div align="center">
+  <%= will_paginate @skill_profiles %>
+</div>

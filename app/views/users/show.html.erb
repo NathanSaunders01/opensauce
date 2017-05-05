@@ -5,15 +5,26 @@
         <%= image_tag @user.profile.avatar.url, class: 'avatar-show-img' %>
         </br>
         </br>
-        <% if @user == current_user %>
-          <%= link_to "Edit Your Profile", edit_user_profile_path(user_id: current_user.id) %>
+        <% if (@user == current_user || current_user.admin?) %>
+          <%= link_to "Edit Profile", edit_user_profile_path(user_id: @user.id) %>
           </br>
           <%= link_to "Security Settings", edit_user_registration_path %>
+          <% if current_user.admin? and !@user.admin? %>
+            </br>
+            <span class="approve-admin">
+              <%= link_to "Upgade to Admin", approve_user_path(@user), method: :put, remote: true %>
+            </span>
+          <% else %>
+            </br>
+            <span class="approve-admin">
+              <%= link_to "Remove Admin", remove_user_path(@user), method: :put, remote: true %>
+            </span>
+          <% end %>
         <% end %>
       </div>
       <div class="col-md-6">
         <h1><%= @user.profile.first_name %> <%= @user.profile.last_name %></h1>
-        <h3><span class="skill-icon"><%= skill_icon %></span> <%= @user.profile.skills %></h3>
+        <%#= skills will be listed here %>
         <div class="well profile-block profile-description">
           <h3>Description</h3>
           <%= @user.profile.description %>

@@ -144,3 +144,16 @@ footer {
   font-weight: bold;
   opacity: 0.75;
 }
+
+.navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a {
+  opacity: 0.75;
+}
+
+
+.checkbox {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 25px;
+  font-weight: normal;
+}

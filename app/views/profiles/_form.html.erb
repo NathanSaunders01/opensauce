@@ -13,13 +13,15 @@
   </div>
   <div class="form-group">
     <%= f.label :skills %>
-    <%= f.select :skills, ['Graphic Designer', 'Web Developer', 'App Developer', 'Entrepreneur', 'Investor', 'Media'], {}, class: 'form-control' %>
+    <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name do |cb| %>
+      <% cb.label(class: "checkbox") {cb.check_box + cb.text } %>
+    <% end %>
   </div>
   <div class="form-group">
     <%= f.label :description %>
     <%= f.text_area :description, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.submit "Update Profile", class: 'btn btn-primary' %>
+    <%= f.submit(@profile.new_record? ? "Create Profile" : "Update Profile", class: 'btn btn-primary') %>
   </div>
 <% end %>

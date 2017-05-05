@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :only_current_user
+  before_action :only_current_user, only: [:create, :edit, :update]
   
   before_action :set_current_user, only: [:create, :edit, :update]
   
@@ -42,15 +42,18 @@ class ProfilesController < ApplicationController
   
 private 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :avatar, :skills, :description)
-  end
-  
-  def only_current_user
-    @user = User.find( params[:user_id] )
-    redirect_to(root_url) unless @user == current_user
+    params.require(:profile).permit(:first_name, :last_name, :avatar, :description, skill_ids: [] )
   end
   
   def set_current_user
     @user = User.find( params[:user_id] )
+  end
+    
+  def only_current_user
+    @user = User.find( params[:user_id] )
+    if current_user != @user and !current_user.admin?
+      flash[:danger] = "You can only edit your own account"
+      redirect_to(root_url)
+    end
   end
 end

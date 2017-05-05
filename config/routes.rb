@@ -7,9 +7,17 @@ Rails.application.routes.draw do
   
   resources :users do
     resource :profile
+    member do
+      put :approve
+      put :remove
+    end
   end
   
+  get 'friends', to: 'users#friends'
+  
   resources :projects  
+  
+  resources :skills, except: [:destroy]
   
   resources :categories, except: [:destroy]
   

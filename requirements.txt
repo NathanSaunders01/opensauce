@@ -12,3 +12,8 @@ Projects
 
 todo
 * make flash notices appear above content rather than push down on page
+* Have projects with searchable categories
+* Have profiles with their individual projects
+* Be able to follow other users profiles
+* Comments on the comments with auth for CRUD elements
+* Vote on projects and comments

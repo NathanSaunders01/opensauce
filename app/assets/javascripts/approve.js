@@ -1,0 +1,1 @@
+$('.approve-admin').html('Approved');

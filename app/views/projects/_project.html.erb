@@ -1,7 +1,7 @@
 <% obj.each do |project| %>
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <div class="well">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="well <%= cycle('white-bg', '') %>">
         <div class="project-title">
           <%= link_to project.title, project_path(project) %>
         </div>
@@ -9,7 +9,9 @@
           <%= truncate(project.plan, length: 100) %>
         </div>
         <div class="project-meta-details">
-          <small>Created by: <%= project.user.profile.first_name if project.user%>,
+          <% if project.user %>
+            <small>Created by: <%= link_to project.user.profile.first_name, user_path(project.user) %>,
+          <% end %>
           <%= time_ago_in_words(project.created_at) %> ago,
           last updated: <%= time_ago_in_words(project.updated_at) %> ago</small>
         </div>

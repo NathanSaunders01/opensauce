@@ -34,6 +34,8 @@ gem 'will_paginate', '3.1.5'
 # Use Twitter Bootstrap library for front-end UI and layout
 gem 'bootstrap-sass', '3.3.7'
 
+gem 'bootstrap-will_paginate'
+
 # Use Font Awesome Sass gem for adding icons
 gem 'font-awesome-sass', '4.6.2'
 

@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_one :profile
   has_many :projects, dependent: :destroy
   
+  has_many :friendships
+  has_many :friends, through: :friendships
 end
